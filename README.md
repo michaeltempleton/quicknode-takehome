@@ -1,5 +1,5 @@
 ## About Me - Michael Templeton
-Hello, QuickNode team! I am a Full-Stack Software Developer with over 10 years of professional experience, passionate about building efficient and scalable solutions. With a diverse background across various technologies and stacks, I’ve taken multiple projects from 0 to 1 — ranging from Content Management Systems and Point of Sales to Factory Embedded Hardware and, a recent favorite, Web3 ecosystems.
+Hello, QuickNode team! I am a Full-Stack Software Developer with over 10 years of professional experience, passionate about building efficient and scalable solutions. With a diverse background across various technologies and stacks, I’ve taken multiple projects from 0 to 1 — ranging from Content Management Systems and Point of Sales to Factory Embedded Hardware and, a recent favorite, Web3 ecosystems, among others.
 
 Many of my roles have been customer-facing, and I thrive in these environments, bridging the gap between technical and non-technical teams to ensure clarity and impact.
 
