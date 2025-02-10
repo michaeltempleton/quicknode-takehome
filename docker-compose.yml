@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: quicknode-takehome
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: ["node", "query-balance.js"]
