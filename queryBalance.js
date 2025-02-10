@@ -1,37 +1,49 @@
 require("dotenv").config();
-
 const { Web3 } = require("web3");
-const { validateRpcUrls, validateEthereumAddress } = require("./validateEnv");
+const { validateRpcUrls } = require("./validateEnv");
 
+// list all of the RPC URLs from .env in an easily iterable way
 const RPCUrls = {
-    RINKEBY: process.env.RPC_RINKEBY_URL,
-    ROPSTEN: process.env.RPC_ROPSTEN_URL,
+    SEPOLIA: process.env.RPC_SEPOLIA_URL,
+    HOLESKY: process.env.RPC_HOLESKY_URL,
     MAINNET: process.env.RPC_MAINNET_URL
 };
 
-const ETHEREUM_ADDRESS = process.env.ETHEREUM_ADDRESS;
+// make the ENS name .env variable easily accessible
+const ensName = process.env.ENS_NAME;
 
-const getLatestBalance = async (address, network) => {
- const web3 = new Web3(RPCUrls[network]);
+const getLatestBalanceAndDetails = async (network) => {
+ const web3 = new Web3(RPCUrls[network]); // quickly pass in the RPC URL for a given network to access functions
 
  try {
-    const balanceWei = await web3.eth.getBalance(address);
+    const ownerAddress = await web3.eth.ens.getAddress(ensName); // resolve the ensName
+    if (!ownerAddress || ownerAddress === "0x0000000000000000000000000000000000000000") {
+        return console.error("Invalid ENS Owner Address");
+    }
+
+    // run the appropriate methods for getting: latest block number, latest balance, and latest transaction count for the address on the given network
+    const latestBlockNumber = await web3.eth.getBlockNumber();
+    const balanceWei = await web3.eth.getBalance(ownerAddress, latestBlockNumber);
     const balanceEther = web3.utils.fromWei(balanceWei, "ether");
-    console.log(`Balance of address ${address} on ${network}: ${balanceEther} ETH`);
+    const transactionCount = await web3.eth.getTransactionCount(ownerAddress)
+    console.log(`Latest block number: ${latestBlockNumber}`);
+    console.log(`Balance of address ${ownerAddress} on ${network}: ${balanceEther} ETH`);
+    console.log(`Transaction Count: ${transactionCount}`);
  } catch (err) {
     console.error(`Error querying ${network}: ${err.message}`);
  }
 }
 
 (async () => {
+    // run validation to ensure the RPC URLs are not null or still the .env defaults
     const areRpcUrlsValid = validateRpcUrls(RPCUrls);
-    const isAddressValid = validateEthereumAddress(ETHEREUM_ADDRESS);
 
-    if (!areRpcUrlsValid || !isAddressValid) {
+    if (!areRpcUrlsValid) {
         return console.error("One or more environment variables are invalid. Exiting...");
     }
 
+    // iterate over the previously defined RPCUrls and dynamically pass them into the modular function
     for (const network of Object.keys(RPCUrls)) {
-        await getLatestBalance(ETHEREUM_ADDRESS, network);
+        await getLatestBalanceAndDetails(network);
     }
 })();
