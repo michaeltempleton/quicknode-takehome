@@ -9,4 +9,4 @@ services:
       - .:/app
     env_file:
       - .env
-    command: ["node", "query-balance.js"]
+    command: ["node", "queryBalance.js"]
