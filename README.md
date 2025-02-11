@@ -9,7 +9,7 @@ I'm excited to dive deeper into how my experience aligns with QuickNode's needs 
 
 ## Running The Project
 #### 1. Setting Environment Variables
-Please replace the default RPC URL variables `(RPC_RINKEBY_URL, RPC_ROPSTEN_URL, RPC_MAINNET_URL)` of this project's `.env` file with valid ones. 
+Please replace the default RPC URL variables `(RPC_SEPOLIA_URL, RPC_HOLESKY_URL, RPC_MAINNET_URL)` of this project's `.env` file with valid ones. 
 
 The ENS Name can be changed via the `ENS_NAME` variable.
 
