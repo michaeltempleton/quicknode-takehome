@@ -27,7 +27,9 @@ docker compose up --build
 ```
 npm install
 
-node queryBalance.js - or - npm run queryBalance
+node queryBalance.js 
+- or - 
+npm run queryBalance
 ```
 
 ____
