@@ -11,7 +11,7 @@ I'm excited to dive deeper into how my experience aligns with QuickNode's needs 
 #### 1. Setting Environment Variables
 Please replace the default RPC URL variables `(RPC_RINKEBY_URL, RPC_ROPSTEN_URL, RPC_MAINNET_URL)` of this project's `.env` file with valid ones. 
 
-The Ethereum Address can be changed via the `ETHEREUM_ADDRESS` variable.
+The ENS Name can be changed via the `ENS_NAME` variable.
 
 This project has validation that will prevent the query command from executing if any of the values are null or remain as the default value provided.
 
@@ -36,4 +36,4 @@ ____
 
 ### My Journey:
 
-After reading the instructions I first considered which language, library, and RPC provider I wanted to use for my solution. I chose JavaScript paired with Web3.js based on previous experiences. As I'm using an ephemeral environment for this project, I knew that I wanted to use Docker as a way for both the reviewer and I to run the project without worries of dependencies. Quicknode.eth did not resolve on Holesky and Sepolia during testing so I created flexible environment variables that would allow me to pass in not only the RPC Endpoints but also the ENS Name (in which I use resolver.eth to verify my solution is functional). I created a validation mechanic surrounding the `.env` file that would help ensure values are provided for all of the RPC URLs and Ethereum Address. I then implemented the necessary code for execution and ran through a few tests with the possible addresses I came up with.
+After reading the instructions I first considered which language, library, and RPC provider I wanted to use for my solution. I chose JavaScript paired with Web3.js based on previous experiences. As I'm using an ephemeral environment for this project, I knew that I wanted to use Docker as a way for both the reviewer and I to run the project without worries of dependencies. Quicknode.eth did not resolve on Holesky and Sepolia during testing so I created flexible environment variables that would allow me to pass in not only the RPC Endpoints but also the ENS Name (in which I use resolver.eth to verify my solution is functional). I created a validation mechanic surrounding the `.env` file that would help ensure values are provided for all of the RPC URLs and ENS Name. I then implemented the necessary code for execution and ran through a few tests with the possible addresses I came up with.
