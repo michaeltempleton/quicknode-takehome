@@ -17,7 +17,7 @@ const getLatestBalanceAndDetails = async (network) => {
 
     try {
         const ownerAddress = await web3.eth.ens.getAddress(ensName); // 1d. resolve the ensName
-        console.log("ownerAddress", ownerAddress)
+
         if (!ownerAddress || ownerAddress === "0x0000000000000000000000000000000000000000") {
             return console.error("Invalid ENS Owner Address");
         }
